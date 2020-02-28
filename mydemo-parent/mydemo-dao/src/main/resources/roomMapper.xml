@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.RoomDao">
+    <resultMap id="room" type="room">
+        <id property="roomId" column="room_id"></id>
+        <result property="roomTypeId" column="room_type_id"></result>
+        <result property="roomPrice" column="room_price"></result>
+        <result property="roomDesc" column="room_desc"></result>
+        <result property="roomStateId" column="room_state_id"></result>
+        <result property="roomRemark" column="room_remark"></result>
+    </resultMap>
+
+    <select id="getAllRoom" resultMap="room">
+        select * from roominfo
+    </select>
+
+    <select id="getRoomPage" resultMap="room">
+        select room_id, room_type_id, room_price, room_desc, room_state_id, room_remark from roominfo limit #{param1},#{param2}
+    </select>
+    <select id="queryCount" resultType="int">
+        select count(*) from roominfo
+    </select>
+</mapper>
